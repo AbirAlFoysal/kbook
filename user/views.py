@@ -12,6 +12,7 @@ class CreateProfilePageView(CreateView):
 	model = Profile
 	form_class = profile_page_form
 	template_name = "users/creat_user_profile_page.html"
+    
 	#fields = ['bio' ,'profile_pic', 'website_url', 'facebook_url', 'instagram_url']
 	#fields = '__all__'
 	
