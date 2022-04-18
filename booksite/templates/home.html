@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block base %}
+<br>
+<center><h1>Home</h1></center>
+
+{% for book in books  %}
+{% include 'product.html' %}
+{% endfor %}
+{% endblock base %}
