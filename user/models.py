@@ -5,7 +5,7 @@ from django.urls import reverse, reverse_lazy
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
     # post = models.ForeignKey(Post, related_name='post', on_delete=models.CASCADE)
 

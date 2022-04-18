@@ -1,10 +1,30 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-
-from django.views.generic import DetailView 
+from .models import Profile
+from django.views.generic import DetailView , CreateView
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterForm, profile_page_form, UserUpdateForm, ProfileUpdateForm
 from django.views.decorators.csrf import csrf_exempt
+
+
+
+class CreateProfilePageView(CreateView):
+	model = Profile
+	form_class = profile_page_form
+	template_name = "users/creat_user_profile_page.html"
+	#fields = ['bio' ,'profile_pic', 'website_url', 'facebook_url', 'instagram_url']
+	#fields = '__all__'
+	
+	def form_valid(self, form):
+		form.instance.user = self.request.user
+		return super().form_valid(form)
+
+
+
+
+
+
+
 
 @csrf_exempt
 def register(request):

@@ -7,6 +7,7 @@ from sqlalchemy import false
 from .models import Profile
 
 
+
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':"form-control"}))
     department = forms.CharField(max_length=6, required = True)
@@ -24,6 +25,32 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'batch']
+
+
+
+class profile_page_form(forms.ModelForm):
+    profile_pic = forms.ImageField(required = False)
+    bio = forms.CharField(max_length=1500, required = False)
+    phone = forms.IntegerField(required = False)
+    website = forms.URLField(required = False)
+    facebook = forms.URLField(required = False)
+    instagram = forms.URLField(required = False)
+    college = forms.CharField(max_length=250, required = False)
+    school = forms.CharField(max_length=250, required = False)
+
+    
+
+    class Meta:
+        model = Profile
+        fields = ['bio',
+        'profile_pic',
+        'phone',
+        'website', 
+        'facebook', 
+        'instagram',
+        'college',
+        'school',
+        ]
 
 
 class ProfileUpdateForm(forms.ModelForm):
